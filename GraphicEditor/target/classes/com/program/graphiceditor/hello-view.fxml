@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="drawer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onScroll="#DrawAreaScroll" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.program.graphiceditor.HelloController">
+   <bottom>
+       <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
+           <Button mnemonicParsing="false" onAction="#Fill" text="Фон" />
+            <Button mnemonicParsing="false" onAction="#GradientFill" text="Фон(Градиент)" />
+            <ToggleButton mnemonicParsing="false" onAction="#PencilClick" text="Карандаш">
+            <toggleGroup>
+               <ToggleGroup fx:id="group" />
+            </toggleGroup></ToggleButton>
+         <ToggleButton mnemonicParsing="false" onAction="#BrushClick" text="Кисть" toggleGroup="$group" />
+         <ToggleButton mnemonicParsing="false" onAction="#PipetteClick" text="Пипетка" toggleGroup="$group" />
+         <ToggleButton mnemonicParsing="false" onAction="#EraseClick" text="Ластик" toggleGroup="$group" />
+       </ToolBar>
+   </bottom>
+   <top>
+       <MenuBar BorderPane.alignment="CENTER">
+           <Menu mnemonicParsing="false" text="Правка">
+               <MenuItem mnemonicParsing="false" onAction="#clearArea" text="Очистить область" />
+               <MenuItem mnemonicParsing="false" onAction="#setBackGroundImage" text="Добавить изображение" />
+           </Menu>
+       </MenuBar>
+   </top>
+   <left>
+       <VBox prefHeight="334.0" prefWidth="102.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
+           <Label text="Свойства кисти">
+              <font>
+                  <Font name="System Bold" size="12.0" />
+              </font>
+           </Label>
+           <Label text="Размер" />
+           <Slider fx:id="brushSize" min="1.0" value="5.0" />
+           <Label text="Основной цвет" />
+           <ColorPicker fx:id="firstColor" />
+           <Label text="Доп. цвет" />
+           <ColorPicker fx:id="secondColor" />
+       </VBox>
+   </left>
+   <center>
+       <Pane fx:id="container" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <Canvas fx:id="drawingArea" height="333.0" onMouseDragged="#DrawAreaMouseDragged"
+                   onMousePressed="#DrawAreaMousePressed" onMouseReleased="#DrawAreaMouseReleased" width="500.0"/>
+       </Pane>
+   </center>
+</BorderPane>
